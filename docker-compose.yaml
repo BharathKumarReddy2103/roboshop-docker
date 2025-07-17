@@ -5,7 +5,7 @@ networks:
     #external: true #I created network already using docker network create roboshop
 services:
   mongodb:
-    image: nbkumar2103/mongodb:v3
+    image: nbkumar2103/mongodb:v1
     container_name: mongodb
   catalogue:
     image: nbkumar2103/catalogue:v3
