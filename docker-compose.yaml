@@ -5,10 +5,10 @@ networks:
     #external: true #I created network already using docker network create roboshop
 services:
   mongodb:
-    image: nbkumar2103/mongodb:v1
+    image: nbkumar2103/mongodb:v3
     container_name: mongodb
   catalogue:
-    image: nbkumar2103/catalogue:v1
+    image: nbkumar2103/catalogue:v3
     container_name: catalogue
     depends_on:
     - mongodb
@@ -16,55 +16,55 @@ services:
     image: redis:7.0
     container_name: redis
   user:
-    image: nbkumar2103/user:v1
+    image: nbkumar2103/user:v3
     container_name: user
     depends_on:
     - redis
     - mongodb
   cart:
-    image: nbkumar2103/cart:v1
+    image: nbkumar2103/cart:v3
     container_name: cart
     depends_on:
     - catalogue
     - redis
   mysql:
-    image: nbkumar2103/mysql:v1
+    image: nbkumar2103/mysql:v3
     container_name: mysql
   shipping:
-    image: nbkumar2103/shipping:v1
+    image: nbkumar2103/shipping:v3
     container_name: shipping
     depends_on:
     - mysql
     - cart
-  rabbitmq:
-    image: rabbitmq:3
-    container_name: rabbitmq
-    environment:
-      RABBITMQ_DEFAULT_USER: roboshop
-      RABBITMQ_DEFAULT_PASS: roboshop123
-  payment:
-    image: nbkumar2103/payment:v1
-    container_name: payment
-    environment:
-      CART_HOST: cart
-      CART_PORT: 8080
-      USER_HOST: user
-      USER_PORT: 8080
-      AMQP_HOST: rabbitmq
-      AMQP_USER: roboshop
-      AMQP_PASS: roboshop123
-    depends_on:
-    - rabbitmq
-    - cart
-    - user
-  frontend:
-    image: nbkumar2103/frontend:v1
-    container_name: frontend
-    ports:
-    - "80:80"
-    depends_on:
-    - catalogue
-    - user
-    - cart
-    - shipping
-    - payment
+  # rabbitmq:
+  #   image: rabbitmq:3
+  #   container_name: rabbitmq
+  #   environment:
+  #     RABBITMQ_DEFAULT_USER: roboshop
+  #     RABBITMQ_DEFAULT_PASS: roboshop123
+  # payment:
+  #   image: nbkumar2103/payment:v3
+  #   container_name: payment
+  #   environment:
+  #     CART_HOST: cart
+  #     CART_PORT: 8080
+  #     USER_HOST: user
+  #     USER_PORT: 8080
+  #     AMQP_HOST: rabbitmq
+  #     AMQP_USER: roboshop
+  #     AMQP_PASS: roboshop123
+  #   depends_on:
+  #   - rabbitmq
+  #   - cart
+  #   - user
+  # frontend:
+  #   image: nbkumar2103/frontend:v3
+  #   container_name: frontend
+  #   ports:
+  #   - "80:80"
+  #   depends_on:
+  #   - catalogue
+  #   - user
+  #   - cart
+  #   - shipping
+  #   - payment
