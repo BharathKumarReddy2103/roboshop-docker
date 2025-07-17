@@ -57,14 +57,14 @@ services:
     - rabbitmq
     - cart
     - user
-  # frontend:
-  #   image: nbkumar2103/frontend:v1
-  #   container_name: frontend
-  #   ports:
-  #   - "80:80"
-  #   depends_on:
-  #   - catalogue
-  #   - user
-  #   - cart
-  #   - shipping
-  #   - payment
+  frontend:
+    image: nbkumar2103/frontend:v1
+    container_name: frontend
+    ports:
+    - "80:80"
+    depends_on:
+    - catalogue
+    - user
+    - cart
+    - shipping
+    - payment
