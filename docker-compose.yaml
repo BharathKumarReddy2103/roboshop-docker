@@ -39,8 +39,8 @@ services:
   mysql:
     image: nbkumar2103/mysql:v1
     container_name: mysql
-    volumes:
-    - mysql:/var/lib/mysql
+    # volumes:
+    # - mysql:/var/lib/mysql
   shipping:
     image: nbkumar2103/shipping:v1
     container_name: shipping
