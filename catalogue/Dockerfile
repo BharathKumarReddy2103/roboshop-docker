@@ -10,6 +10,7 @@
 # USER roboshop
 # CMD ["node","server.js"]
 
+#Dockerfile with multi stage builds
 FROM node:20-alpine3.21 AS builder
 WORKDIR /opt/server
 COPY package.json .
