@@ -1,4 +1,4 @@
-# Dockerfile without multi stage build
+# Dockerfile without multi stage builds
 # FROM maven
 # WORKDIR /opt/server
 # COPY pom.xml .
@@ -10,7 +10,7 @@
 # CMD ["java","-jar","shipping.jar"]
 
 
-#Dockerfile with multi stage build
+#Dockerfile with multi stage builds
 FROM maven AS builder
 WORKDIR /opt/server
 COPY pom.xml .

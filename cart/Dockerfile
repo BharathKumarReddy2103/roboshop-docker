@@ -1,4 +1,4 @@
-#Dockefile without multi stage build
+#Dockefile without multi stage builds
 # FROM node:20
 # WORKDIR /opt/server
 # COPY package.json .
@@ -9,7 +9,7 @@
 #     CATALOGUE_PORT="8080"
 # CMD ["node","server.js"]
 
-#Dockerfile with multi stage build
+#Dockerfile with multi stage builds
 FROM node:20-alpine3.21 AS builder
 WORKDIR /opt/server
 COPY package.json .

@@ -1,4 +1,4 @@
-#Dockerfile without multi stage build
+#Dockerfile without multi stage builds
 # FROM node:20
 # WORKDIR /opt/server
 # COPY package.json .
@@ -9,7 +9,7 @@
 #     MONGO_URL="mongodb://mongodb:27017/users"
 # CMD ["node","server.js"]
 
-#Dockerfile with multi stage build
+#Dockerfile with multi stage builds
 FROM node:20-alpine3.21 AS builder
 WORKDIR /opt/server
 COPY package.json .
