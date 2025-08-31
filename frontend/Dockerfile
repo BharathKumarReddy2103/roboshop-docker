@@ -1,3 +1,12 @@
+#Dockerfile without multi stage builds
+# FROM nginx
+# RUN rm -rf /usr/share/nginx/html/index.html
+# RUN rm -rf /etc/nginx/nginx.conf
+# RUN rm -rf /etc/nginx/conf.d/default.conf
+# ADD nginx.conf /etc/nginx/nginx.conf
+# ADD static /usr/share/nginx/html/
+
+
 FROM nginx:1.29.0-alpine
 RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 RUN mkdir -p /var/cache/nginx/client_temp && \
@@ -18,11 +27,3 @@ ADD nginx.conf /etc/nginx/nginx.conf
 ADD static /usr/share/nginx/html/
 USER nginx
 CMD ["nginx", "-g", "daemon off;"]
-
-
-# FROM nginx
-# RUN rm -rf /usr/share/nginx/html/index.html
-# RUN rm -rf /etc/nginx/nginx.conf
-# RUN rm -rf /etc/nginx/conf.d/default.conf
-# ADD nginx.conf /etc/nginx/nginx.conf
-# ADD static /usr/share/nginx/html/
