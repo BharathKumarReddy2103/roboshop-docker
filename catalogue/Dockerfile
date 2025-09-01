@@ -30,7 +30,7 @@ CMD ["node","server.js"]
 # CMD ["node","server.js"]
 
 
-#Dockerfile without multi stage builds
+# Dockerfile without multi stage builds
 # FROM node:20
 # WORKDIR /opt/server
 # COPY package.json .
