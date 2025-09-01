@@ -1,4 +1,4 @@
-#Dockerfile with multi stage builds
+# Dockerfile with multi stage builds
 FROM maven AS builder
 WORKDIR /opt/server
 COPY pom.xml .
