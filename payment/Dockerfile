@@ -1,4 +1,4 @@
-#Dockerfile with multi-stage builds
+# Dockerfile with multi-stage builds
 # Stage 1: Build
 FROM python:3.9.23-alpine3.22 AS builder
 WORKDIR /build
