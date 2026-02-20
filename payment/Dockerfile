@@ -24,6 +24,7 @@ COPY --chown=roboshop:roboshop payment.ini .
 COPY --chown=roboshop:roboshop *.py .
 CMD ["uwsgi", "--ini", "payment.ini"]
 
+
 # Dockerfile without multi-stage builds
 # FROM python:3.9
 # EXPOSE 8080
