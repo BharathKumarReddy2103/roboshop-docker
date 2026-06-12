@@ -1,11 +1,14 @@
-# Dockerfile without multi stage builds
-FROM node:20
+# Dockerfile with optimisations
+FROM node:20-alpine3.21
+RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 WORKDIR /opt/server
 COPY package.json .
 COPY *.js .
 RUN npm install
+RUN chown -R roboshop:roboshop /opt/server
 ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
+USER roboshop
 CMD ["node","server.js"]
 
 # Dockerfile with multi stage builds
@@ -25,15 +28,12 @@ CMD ["node","server.js"]
 # COPY --from=builder /opt/server /opt/server
 # CMD ["node","server.js"]
 
-# Dockerfile with optimisations
-# FROM node:20-alpine3.21
-# RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
+# Dockerfile without multi stage builds
+# FROM node:20
 # WORKDIR /opt/server
 # COPY package.json .
 # COPY *.js .
 # RUN npm install
-# RUN chown -R roboshop:roboshop /opt/server
 # ENV MONGO="true" \
 #     MONGO_URL="mongodb://mongodb:27017/catalogue"
-# USER roboshop
 # CMD ["node","server.js"]
