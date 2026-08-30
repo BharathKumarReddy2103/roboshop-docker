@@ -3,11 +3,11 @@ networks:
     driver: bridge
     name: roboshop
     #external: true #I created network already using docker network create roboshop
-volumes:
-  mongodb:
-  redis:
-  mysql:
-  rabbitmq: # equal to docker volume create rabbitmq 
+# volumes:
+#   mongodb:
+#   redis:
+#   mysql:
+#   rabbitmq: # equal to docker volume create rabbitmq 
 services:
   mongodb:
     image: nbkumar2103/mongodb:v1
@@ -47,37 +47,37 @@ services:
     depends_on:
     - mysql
     - cart
-  rabbitmq:
-    image: rabbitmq:3
-    container_name: rabbitmq
-    environment:
-      RABBITMQ_DEFAULT_USER: roboshop
-      RABBITMQ_DEFAULT_PASS: roboshop123
-    volumes:
-      - rabbitmq:/var/lib/rabbitmq
-  payment:
-    image: nbkumar2103/payment:v4
-    container_name: payment
-    environment:
-      CART_HOST: cart
-      CART_PORT: 8080
-      USER_HOST: user
-      USER_PORT: 8080
-      AMQP_HOST: rabbitmq
-      AMQP_USER: roboshop
-      AMQP_PASS: roboshop123
-    depends_on:
-    - rabbitmq
-    - cart
-    - user
-  frontend:
-    image: nbkumar2103/frontend:v4
-    container_name: frontend
-    ports:
-    - "80:80"
-    depends_on:
-    - catalogue
-    - user
-    - cart
-    - shipping
-    - payment
+  # rabbitmq:
+  #   image: rabbitmq:3
+  #   container_name: rabbitmq
+  #   environment:
+  #     RABBITMQ_DEFAULT_USER: roboshop
+  #     RABBITMQ_DEFAULT_PASS: roboshop123
+  #   volumes:
+  #     - rabbitmq:/var/lib/rabbitmq
+  # payment:
+  #   image: nbkumar2103/payment:v4
+  #   container_name: payment
+  #   environment:
+  #     CART_HOST: cart
+  #     CART_PORT: 8080
+  #     USER_HOST: user
+  #     USER_PORT: 8080
+  #     AMQP_HOST: rabbitmq
+  #     AMQP_USER: roboshop
+  #     AMQP_PASS: roboshop123
+  #   depends_on:
+  #   - rabbitmq
+  #   - cart
+  #   - user
+  # frontend:
+  #   image: nbkumar2103/frontend:v4
+  #   container_name: frontend
+  #   ports:
+  #   - "80:80"
+  #   depends_on:
+  #   - catalogue
+  #   - user
+  #   - cart
+  #   - shipping
+  #   - payment
